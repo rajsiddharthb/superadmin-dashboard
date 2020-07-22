@@ -1,0 +1,96 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "commonjs": true,
+    "es6": true,
+    "jest": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "airbnb"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "parser": "babel-eslint",
+  "plugins": [
+    "react-hooks",
+    "react",
+    "jest"
+  ],
+  "settings": {
+    "react": {
+      "version": "16.12.0"
+    }
+  },
+  "rules": {
+    "react-hooks/exhaustive-deps": "warn", // <--- THIS IS THE NEW RULE
+    "jsx-a11y/label-has-associated-control" : "off",
+    "jsx-a11y/label-has-for" : "off",
+    "no-plusplus": "off",
+    "no-async-promise-executor": ["error"],
+    "no-await-in-loop": ["off"],
+    "no-extra-parens": ["error", "all", {
+      "ignoreJSX": "all"
+    }],
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-one-expression-per-line": ["off"],
+    "no-misleading-character-class": ["error"],
+    "no-template-curly-in-string": ["error"],
+    "no-underscore-dangle": ["off"],
+    "require-atomic-updates": ["error"],
+    "accessor-pairs": ["error"],
+    "class-methods-use-this": ["off"],
+    "no-mixed-operators": ["off"],
+    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "linebreak-style": ["error", "unix"],
+    "comma-dangle": ["error", "never"],
+    "require-jsdoc": ["off", {
+      "require": {
+        "FunctionDeclaration": true,
+        "MethodDefinition": true,
+        "ClassDeclaration": true,
+        "ArrowFunctionExpression": true,
+        "FunctionExpression": true
+      }
+    }],
+    "valid-jsdoc": ["error"],
+    "react/prefer-stateless-function": ["error"],
+    "react/jsx-filename-extension": ["error", {
+      "extensions": [".js", ".jsx"]
+    }],
+    "import/no-unresolved": "off",
+    "import/prefer-default-export": "off",
+    "import/no-extraneous-dependencies":"off",
+    "arrow-parens": "off",
+    "import/named": 0,
+    "react/prop-types": "off",
+    "react/require-default-props": "off",
+    "func-names": "off",
+    "no-confusing-arrow": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
+
+    "react-hooks/rules-of-hooks": "error",
+    "object-curly-newline": "off",
+    "flowtype/define-flow-type": "off",
+    "flowtype/require-valid-file-annotation": "off",
+    "flowtype/use-flow-type": "off",
+    "react/no-access-state-in-setstate": "off",
+    "no-param-reassign": "warn",
+    "max-len": "off"
+  },
+  "globals": {
+    "Generator": true,
+    "Iterator": true,
+    "Iterable": true,
+    "$Keys": true,
+    "$Shape": true
+  }
+}

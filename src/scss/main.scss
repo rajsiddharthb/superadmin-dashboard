@@ -1,0 +1,120 @@
+@import "./common/__flex";
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+}
+
+#_davincia {
+  background-color: #ffffff;
+  margin: 0 auto;
+  height: 100vh;
+  display: flex;
+}
+
+@font-face {
+  font-family:"segoeui";
+  src:local('BAUHS'),
+  url('../assets/fonts/segoeui.ttf') format('truetype');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family:"segoeui";
+  outline: none;
+  box-sizing: border-box;
+
+}
+
+ul li{
+  list-style-type: none;
+}
+a{
+  text-decoration: none;
+}
+button{
+  border: none;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  outline: none;
+  cursor: pointer;
+  overflow: hidden;
+  backface-visibility: hidden;
+}
+input, textarea, select{
+  border: none;
+  outline: none;
+  resize: none;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  cursor: pointer;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #ffbf51;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* button:focus{
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+
+} */
+/* button:focus, button:active, button:focus:active,button::-moz-focus-inner {
+  background-image: none !important;
+  outline: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+
+} */
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.home {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.blackLine {
+  border-top: 4px solid #000;
+  width: 97%;
+  margin: 35px auto 0;
+}
+
+.blackLineSmall {
+  border-top: 4px solid #000;
+  width: 87.25%;
+  margin: 35px auto 0;
+}
+
+.pos-rel {
+  position: relative;
+}
+
+._container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+}

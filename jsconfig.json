@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "config": ["./config/index.js"],
+      "common": ["./common", "./common/"],
+      "assets": ["./assets/*", "./assets/"],
+      "pages": ["./pages/*", "./pages/"],
+      "lib": ["./lib/*", "./lib/"],
+      "styles": ["./scss/*", "./scss/"],
+      "modules": ["./modules/*", "./modules/"]
+    }
+  }
+}

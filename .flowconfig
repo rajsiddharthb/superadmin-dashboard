@@ -1,0 +1,33 @@
+
+[ignore]
+
+.*/build/.*
+.*/node_modules/*
+
+[include]
+
+[lints]
+
+[options]
+
+module.file_ext=.sass
+module.file_ext=.scss
+module.file_ext=.js
+esproposal.decorators=ignore
+
+# aliases
+module.name_mapper='^common' ->'<PROJECT_ROOT>/src/common'
+module.name_mapper='^config' ->'<PROJECT_ROOT>/src/config'
+module.name_mapper='^assets' ->'<PROJECT_ROOT>/src/assets'
+module.name_mapper='^lib' ->'<PROJECT_ROOT>/src/lib'
+module.name_mapper='^pages' ->'<PROJECT_ROOT>/src/pages'
+module.name_mapper='^modules' ->'<PROJECT_ROOT>/src/pages'
+module.name_mapper='^scss' ->'<PROJECT_ROOT>/src/scss'
+
+[strict]
+
+[libs]
+/type-def-modules
+
+[version]
+^0.118.0

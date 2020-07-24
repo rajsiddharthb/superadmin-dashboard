@@ -30,7 +30,7 @@ const dynamicallyCreateStore = (rootReducer: Object, controllerManager: Function
       return [sagaMiddleware, createLogger, ...middlewares];
     }
 
-    return [...middlewares];
+    return [sagaMiddleware, ...middlewares];
   };
 
   const store = createStore(

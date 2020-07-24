@@ -10,6 +10,7 @@ declare module 'react-redux' {
     declare module.exports: any;
 
     declare function connect(): Function
+    declare function Provider(): Function
 }
 
 declare module 'redux' {
@@ -47,6 +48,10 @@ declare module 'react-router-dom' {
     declare module.exports: any;
 
     declare function withRouter(): Function
+    declare function Switch(): Function
+    declare function Route(): Function
+    declare function BrowserRouter(): Function
+    declare function Router(): Function
 }
 
 declare module 'history' {

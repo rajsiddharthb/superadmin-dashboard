@@ -7,7 +7,7 @@ const DashboardPage = () => (
       color: '#696A6B'
     }}
   >
-    <h1>Welcome Super Admin Dashboard</h1>
+    <h1>Welcome To Super Admin Dashboard</h1>
     <h2>Coming Soon !!!</h2>
   </div>
 );

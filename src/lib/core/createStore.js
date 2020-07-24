@@ -8,12 +8,12 @@ import createLogger from 'redux-logger';
 
 /**
  * @param {Array} rootReducer - combined reducers
- * @param {Array} controllers - controllers with saga
+ * @param {Generator} controllerManager - controllers with saga
  * @param {Array} middlewares - hoc
  * @param {String} storeName -
  * @returns {Object} - store
  */
-const dynamicallyCreateStore = (rootReducer: Object, controllers: Object, middlewares: Array<Function | null> = [], storeName: string) => {
+const dynamicallyCreateStore = (rootReducer: Object, controllerManager: Function, middlewares: Array<Function | null> = [], storeName: string) => {
   // If there is more than one stores, this will help to avoid confusions
   if (window[storeName]) {
     return window[storeName];
@@ -30,7 +30,7 @@ const dynamicallyCreateStore = (rootReducer: Object, controllers: Object, middle
       return [sagaMiddleware, createLogger, ...middlewares];
     }
 
-    return [sagaMiddleware, ...middlewares];
+    return [...middlewares];
   };
 
   const store = createStore(
@@ -42,7 +42,7 @@ const dynamicallyCreateStore = (rootReducer: Object, controllers: Object, middle
   );
 
   window[storeName] = store;
-  sagaMiddleware.run(controllers);
+  sagaMiddleware.run(controllerManager);
 
   return store;
 };

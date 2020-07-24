@@ -1,5 +1,10 @@
 @import "./common/__flex";
+// If you want to override variables do it here
 
+// Import CoreUI styles
+@import "~@coreui/coreui/scss/coreui.scss";
+
+// If you want to add something do it here
 * {
   margin: 0;
   padding: 0;

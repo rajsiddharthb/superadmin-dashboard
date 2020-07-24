@@ -1,8 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'react-app-polyfill/ie11'; // For IE 11 support
+import 'react-app-polyfill/stable';
+import { icons } from 'assets/icons';
+import './polyfill';
 import './index.css';
 import App from './App';
+
 import * as serviceWorker from './serviceWorker';
+
+React.icons = icons;
 
 ReactDOM.render(
   <React.StrictMode>

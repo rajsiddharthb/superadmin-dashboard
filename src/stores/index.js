@@ -3,10 +3,15 @@
  */
 
 import createStore from 'lib/core/createStore';
-import { REDUX_STORE_REFERENCES } from './settings';
-// import combinedReducers from './reducers';
+import combinedReducers from 'common/reducers';
+import controllers from 'common/controllers';
 
-export const generalStore = {
-  createGeneralStore: () => createStore(null, /* combinedReducers */[], [], REDUX_STORE_REFERENCES.GENERAL),
-  getGeneralStore: () => window[REDUX_STORE_REFERENCES.GENERAL]
+import { REDUX_STORE_REFERENCES } from './settings';
+
+const createGeneralStore = () => createStore(combinedReducers, controllers, [], REDUX_STORE_REFERENCES.GENERAL);
+const getGeneralStore = () => window[REDUX_STORE_REFERENCES.GENERAL];
+
+export {
+  createGeneralStore,
+  getGeneralStore
 };

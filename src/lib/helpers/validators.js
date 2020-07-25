@@ -1,7 +1,6 @@
 /**
  * @flow
  */
-import PhoneNumber from 'awesome-phonenumber';
 
 const emailValidator = (data: string): boolean => {
   // eslint-disable-next-line no-useless-escape
@@ -10,7 +9,7 @@ const emailValidator = (data: string): boolean => {
   return regexp.test(data);
 };
 
-const phoneNumberValidator = (phone: string): boolean => {
+/* const phoneNumberValidator = (phone: string): boolean => {
   // eslint-disable-next-line no-useless-escape
   const indianPhone = PhoneNumber(phone, 'IND');
   const usPhone = PhoneNumber(phone, 'US');
@@ -19,10 +18,10 @@ const phoneNumberValidator = (phone: string): boolean => {
   const isIndian = indianPhone.isPossible() && indianPhone.isValid() && indianPhone.isMobile();
 
   return isUs || isIndian;
-};
+}; */
 
 // minimum eight characters, at least one uppercase letter, one lowercase letter and one number
-const passwordValidator = (password: string): any => {
+const passwordValidator = (password: string): boolean => {
   // eslint-disable-next-line no-useless-escape
   const regexp = new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})');
 
@@ -78,10 +77,9 @@ const linkedNetworkSrcValidator = (baseUrl: string, value: string) => {
 
 const compareTwoValues = (value1: any, value2: any): boolean => value1 === value2;
 
-export const validator = {
+export {
   linkedNetworkSrcValidator,
   notEmptyStringValidator,
-  phoneNumberValidator,
   socialLinkValidator,
   minLengthValidator,
   maxLengthValidator,

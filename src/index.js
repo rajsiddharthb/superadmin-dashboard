@@ -5,6 +5,8 @@ import 'react-app-polyfill/stable';
 import { icons } from 'assets/icons';
 import './polyfill';
 import './index.css';
+import { Provider } from 'react-redux';
+import { createGeneralStore } from 'stores';
 import App from './App';
 
 import * as serviceWorker from './serviceWorker';
@@ -12,9 +14,9 @@ import * as serviceWorker from './serviceWorker';
 React.icons = icons;
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={createGeneralStore()}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 

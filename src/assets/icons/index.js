@@ -111,7 +111,8 @@ import {
   cilUserFollow,
   cilX,
   cilXCircle,
-  cilWarning
+  cilWarning,
+  cilAccountLogout
 } from '@coreui/icons';
 import { sygnet } from './sygnet';
 import { logo } from './logo';
@@ -166,6 +167,7 @@ export const icons = {
   cilIndentDecrease,
   cilIndentIncrease,
   cilInputPower,
+  cilAccountLogout,
   cilItalic,
   cilJustifyCenter,
   cilJustifyLeft,

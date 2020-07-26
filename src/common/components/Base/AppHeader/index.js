@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import routes from 'config/routes';
+import config from 'config';
+
 import {
   CHeader,
   CToggler,
@@ -9,15 +12,15 @@ import {
   CSubheader,
   CBreadcrumbRouter
 } from '@coreui/react';
-
 // routes config
-import routes from 'config/routes';
 import appReducer from 'common/reducers/appReducer';
+import { attemptToLogout } from 'common/actions/auth/actions';
 import TheHeaderDropdown from '../TheHeaderDropdown';
 
 const AppHeader = () => {
   const dispatch = useDispatch(appReducer);
   const sidebarShow = useSelector(state => state.application.sidebarShow);
+  const user = useSelector(state => state.user.user);
 
   const toggleSidebar = () => {
     const val = [true, 'responsive'].includes(sidebarShow) ? false : 'responsive';
@@ -28,6 +31,11 @@ const AppHeader = () => {
     const val = [false, 'responsive'].includes(sidebarShow) ? true : 'responsive';
     dispatch({ type: 'set', sidebarShow: val });
   };
+
+  const logOut = useCallback(() => {
+    dispatch(attemptToLogout());
+    window.location.href = `${config.app_urls.superAdminDashboard}/login`;
+  }, [dispatch]);
 
   return (
     <CHeader withSubheader>
@@ -58,7 +66,10 @@ const AppHeader = () => {
         {/* <TheHeaderDropdownNotif /> */}
         {/* <TheHeaderDropdownTasks /> */}
         {/* <TheHeaderDropdownMssg /> */}
-        <TheHeaderDropdown />
+        <TheHeaderDropdown
+          logOut={logOut}
+          user={user}
+        />
       </CHeaderNav>
 
       <CSubheader className="px-3 justify-content-between">

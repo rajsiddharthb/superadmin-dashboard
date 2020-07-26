@@ -7,7 +7,13 @@ type Props = {
 }
 
 const AppContainer = ({ className = 'App', children }: Props): Node => (
-  <div className={className || ''}>
+  <div
+    className={className || ''}
+    style={{
+      width: '100%',
+      height: '100%'
+    }}
+  >
     {children}
   </div>
 );

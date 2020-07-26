@@ -5,6 +5,9 @@
 @import "~@coreui/coreui/scss/coreui.scss";
 
 // If you want to add something do it here
+html {
+  height: 100%;
+}
 * {
   margin: 0;
   padding: 0;
@@ -12,10 +15,10 @@
   box-sizing: border-box;
 }
 
-#_davincia {
+#root{
   background-color: #ffffff;
   margin: 0 auto;
-  height: 100vh;
+  height: 100%;
   display: flex;
 }
 
@@ -91,6 +94,7 @@ body {
   sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
 }
 
 .home {

@@ -8,6 +8,5 @@ export const history = createBrowserHistory();
 
 // export
 export default [
-  { path: '/', name: 'Admin', exact: true },
-  { path: '/dashboard', name: 'Dashboard', exact: true, component: Dashboard }
+  { path: '/d', name: 'Dashboard', exact: true, component: Dashboard }
 ];

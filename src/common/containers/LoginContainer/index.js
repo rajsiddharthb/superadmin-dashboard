@@ -1,7 +1,10 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { history } from 'config/routes';
+import { useSelector, useDispatch } from 'react-redux';
 import classnames from 'classnames';
+import { loginSelector } from 'common/selectors/authSelectors';
+import config from 'config';
 
+import { attemptToLogin, clearLogInState } from 'common/actions/auth/actions';
 import {
   CButton,
   CCard,
@@ -17,16 +20,25 @@ import {
   CRow
 } from '@coreui/react';
 import CIcon from '@coreui/icons-react';
+
+import TOAST from 'lib/toastManager';
 import { passwordValidator, emailValidator } from 'lib/helpers/validators';
 
 import InfoCard from './InfoCard';
-
 import './styles.scss';
+import actionStatuses from '../../../lib/core/actionStatuses';
+
+const passDefaultState = { value: '', hasError: false, isInitial: true };
+const emailDefaultState = { value: '', hasError: false, isInitial: true };
 
 const LoginContainer = () => {
-  const [email, setEmail] = useState({ value: '', hasError: false, isInitial: true });
-  const [password, setPassword] = useState({ value: '', hasError: false, isInitial: true });
+  const [email, setEmail] = useState(passDefaultState);
+  const [password, setPassword] = useState(emailDefaultState);
   const [canLogin, setCanLogin] = useState(false);
+  const dispatch = useDispatch();
+
+  const state = useSelector(loginSelector);
+
   const validateCanLogin = useCallback(() => {
     if (!password.hasError && !email.hasError && !password.isInitial && !email.isInitial) {
       setCanLogin(true);
@@ -59,12 +71,31 @@ const LoginContainer = () => {
 
   const onLogin = useCallback(() => {
     if (canLogin) {
-      history.push('/dashboard');
+      dispatch(attemptToLogin({ email: email.value, password: password.value }));
     }
-  }, [canLogin]);
+  }, [canLogin, dispatch, email, password]);
+
+  const showMessage = useCallback(() => {
+    if (actionStatuses.isActionStatusFailed(state.status)) {
+      TOAST.error(state.error, { autoDismissTimeout: 7000 });
+      setPassword(passDefaultState);
+      setEmail(emailDefaultState);
+    }
+  }, [state]);
+
+  useEffect(showMessage, [state]);
+
+  useEffect(() => () => {
+    dispatch(clearLogInState());
+  }, [dispatch]);
+
+  const redirect = () => {
+    window.location.href = `${config.app_urls.superAdminDashboard}/d`;
+  };
 
   return (
     <CContainer className="login-container">
+      {actionStatuses.isActionStatusSucceed(state.status) && redirect()}
       <CRow className="justify-content-center">
         <CCol md="8">
           <CCardGroup>
@@ -84,6 +115,7 @@ const LoginContainer = () => {
                         invalid: email.hasError,
                         valid: !email.isInitial && !email.hasError
                       })}
+                      value={email.value}
                       type="email"
                       placeholder="Email"
                       autoComplete="email"
@@ -101,6 +133,7 @@ const LoginContainer = () => {
                         invalid: password.hasError,
                         valid: !password.isInitial && !password.hasError
                       })}
+                      value={password.value}
                       type="password"
                       placeholder="Password"
                       autoComplete="current-password"
@@ -110,14 +143,20 @@ const LoginContainer = () => {
                   </CInputGroup>
                   <CRow>
                     <CCol xs="6">
-                      <CButton
-                        color={canLogin ? 'primary' : 'secondary'}
-                        className="px-4"
-                        disabled={!canLogin}
-                        onClick={onLogin}
-                      >
-                        Login
-                      </CButton>
+                      {actionStatuses.isActionStatusPending(state.status) ? (
+                        <button className="btn btn-primary" type="button" disabled>
+                          <span className="spinner-grow spinner-grow-sm" role="status" aria-hidden="true" />
+                          {'   '} Wait...
+                        </button>
+                      ) : (
+                        <CButton
+                          color={canLogin ? 'primary' : 'secondary'}
+                          className="px-4"
+                          disabled={!canLogin}
+                          onClick={onLogin}
+                        >Login
+                        </CButton>
+                      )}
                     </CCol>
                   </CRow>
                 </CForm>

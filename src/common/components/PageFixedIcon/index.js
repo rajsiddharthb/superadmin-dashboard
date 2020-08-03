@@ -1,5 +1,5 @@
 import React from 'react';
-import { CIcon } from '@coreui/icons-react';
+import CIcon from '@coreui/icons-react';
 
 const PageFixedIcon = ({ onClick }) => (
   // eslint-disable-next-line jsx-a11y/no-static-element-interactions

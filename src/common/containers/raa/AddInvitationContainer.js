@@ -11,6 +11,7 @@ const AddInvitationContainer = ({ modalIsOpen, setModalIsOpen }) => (
   <CModal
     show={modalIsOpen}
     onClose={() => setModalIsOpen(false)}
+    closeOnBackdrop={false}
     fade
   >
     <CModalHeader closeButton><h1>Invite Raa Member</h1></CModalHeader>

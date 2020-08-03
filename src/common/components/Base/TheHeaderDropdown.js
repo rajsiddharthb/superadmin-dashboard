@@ -17,9 +17,9 @@ const TheHeaderDropdown = ({ logOut, user }) => (
     <CDropdownToggle className="c-header-nav-link" caret={false}>
       <div className="c-avatar">
         <CImg
-          src={user.avatar}
+          src={user && user.avatar}
           className="c-avatar-img"
-          alt="admin@bootstrapmaster.com"
+          alt={user && user.email || ''}
         />
       </div>
     </CDropdownToggle>
@@ -30,7 +30,7 @@ const TheHeaderDropdown = ({ logOut, user }) => (
         color="light"
         className="text-center"
       >
-        <strong>{`${user.firstName}  ${user.lastName}`}</strong>
+        <strong>{`${user && user.firstName}  ${user && user.lastName}`}</strong>
       </CDropdownItem>
       <CDropdownItem divider />
       <CDropdownItem

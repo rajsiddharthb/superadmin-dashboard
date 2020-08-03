@@ -59,19 +59,6 @@ input, textarea, select{
   resize: none;
 }
 
-::-webkit-scrollbar {
-  width: 5px;
-  cursor: pointer;
-}
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-::-webkit-scrollbar-thumb {
-  background: #ffbf51;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
 
 /* button:focus{
   border: none !important;
@@ -120,10 +107,43 @@ body {
   position: relative;
 }
 
-._container {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  overflow: hidden;
+.c-main {
+   position: relative;
+  .fixed-icon {
+    right: 50px;
+    bottom: 35px;
+    position: absolute;
+    border-radius: 50%;
+    background-color: white;
+    border: 2px solid #321fdb;
+    cursor: copy;
+    .fixed-icon-inner {
+      background-color: white;
+      border-radius: 50%;
+      padding: 10px;
+      color: #321fdb;
+      cursor: pointer;
+      &:hover {
+        background-color: #321fdb;
+        color: white;
+      }
+    }
+  }
+}
+.page {
+  margin-bottom: 32px;
+}
+
+.__container {
+  .table-responsive {
+    max-height: 572px;
+  }
+}
+
+.fixHeightPage {
+  border-radius: 20px;
+  max-height: calc(100vh - 155px + 64px);
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 32px;
 }

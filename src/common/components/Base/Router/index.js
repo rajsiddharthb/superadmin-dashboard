@@ -26,6 +26,6 @@ export default ({ routes }) => (
         />
       ))}
     </Suspense>
-    <Redirect to="/d" />
+    <Redirect from="/" to="/d" />
   </Switch>
 );

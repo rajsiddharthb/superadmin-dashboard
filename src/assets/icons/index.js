@@ -112,8 +112,10 @@ import {
   cilX,
   cilXCircle,
   cilWarning,
-  cilAccountLogout
+  cilAccountLogout,
+  cilPlus
 } from '@coreui/icons';
+
 import { sygnet } from './sygnet';
 import { logo } from './logo';
 import { logoNegative } from './logo-negative';
@@ -131,6 +133,7 @@ export const icons = {
   cilAsterisk,
   cilBan,
   cilBasket,
+  cilPlus,
   cilBell,
   cilBold,
   cilBookmark,

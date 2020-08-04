@@ -47,10 +47,12 @@ const RAA = () => {
           </CTabContent>
         </CTabs>
         {/* Modal */}
-        <AddInvitationContainer
-          modalIsOpen={modalIsOpen}
-          setModalIsOpen={setModalIsOpen}
-        />
+        {modalIsOpen && (
+          <AddInvitationContainer
+            modalIsOpen={modalIsOpen}
+            setModalIsOpen={setModalIsOpen}
+          />
+        )}
       </div>
       <PageFixedIcon onClick={() => setModalIsOpen(true)} />
     </div>

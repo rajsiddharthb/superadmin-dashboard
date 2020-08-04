@@ -1,0 +1,8 @@
+.create-invitation-container {
+  .invalid {
+    border: 1px solid red !important;
+  }
+  .valid {
+    border: 1px solid green !important;
+  }
+}

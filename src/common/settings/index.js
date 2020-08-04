@@ -48,6 +48,9 @@ export default {
           },
           SERVICE_NOT_AVAILABLE: {
             SERVICE_NOT_AVAILABLE: 'Service is not available at the moment. Try later or Contact Us'
+          },
+          RESOURCE_DUPLICATION_ERROR: {
+            EMAIL_ALREADY_IN_USE: 'This email already in use.'
           }
         }
       }

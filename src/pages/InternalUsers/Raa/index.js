@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import RaaListContainer from 'common/containers/raa/RaaListContainer';
 import RaaInvitationsContainer from 'common/containers/raa/InvitationsContainer';
 import {
@@ -14,6 +14,8 @@ import AddInvitationContainer from '../../../common/containers/raa/AddInvitation
 
 const RAA = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState(0);
+  const onActiveTabChange = useCallback((tab) => setActiveTab(tab), [setActiveTab]);
 
   return (
     <div className="page">
@@ -21,6 +23,8 @@ const RAA = () => {
         className="fixHeightPage"
       >
         <CTabs
+          activeTab={activeTab}
+          onActiveTabChange={onActiveTabChange}
           style={{
             paddingTop: 10
           }}
@@ -39,10 +43,10 @@ const RAA = () => {
           </CNav>
           <CTabContent fade>
             <CTabPane>
-              <RaaListContainer />
+              {activeTab === 0 && <RaaListContainer />}
             </CTabPane>
             <CTabPane>
-              <RaaInvitationsContainer />
+              {activeTab === 1 && <RaaInvitationsContainer />}
             </CTabPane>
           </CTabContent>
         </CTabs>

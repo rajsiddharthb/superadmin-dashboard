@@ -1,33 +1,36 @@
 import React, { useState } from 'react';
 import { CBadge, CButton, CCollapse, CCardBody, CDataTable } from '@coreui/react';
 
-const usersData = [
-  { name: 'John Doe', email: 'test1raa@thedavincia.com', registered: '2018/01/01', role: 'Guest', status: 'Active' },
-  { name: 'Samppa Nori', email: 'test2raa@thedavincia.com', registered: '2018/01/01', role: 'Member', status: 'Active' },
-  { name: 'Estavan Lykos', email: 'test3raa@thedavincia.com', registered: '2018/02/01', role: 'Staff', status: 'Blocked' },
-  { name: 'Chetan Mohamed', email: 'test4raa@thedavincia.com', registered: '2018/02/01', role: 'Admin', status: 'Blocked' },
-  { name: 'Derick Maximinus', email: 'test5raa@thedavincia.com', registered: '2018/03/01', role: 'Member', status: 'Blocked' },
-  { name: 'Friderik Dávid', email: 'test6raa@thedavincia.com', registered: '2018/01/21', role: 'Staff', status: 'Active' },
-  { name: 'Yiorgos Avraamu', email: 'test7raa@thedavincia.com', registered: '2018/01/01', role: 'Member', status: 'Active' },
-  { name: 'Avram Tarasios', email: 'test8raa@thedavincia.com', registered: '2018/02/01', role: 'Staff', status: 'Blocked' },
-  { name: 'Quintin Ed', email: 'test9raa@thedavincia.com', registered: '2018/02/01', role: 'Admin', status: 'Blocked' },
-  { name: 'Enéas Kwadwo', email: 'test10raa@thedavincia.com', registered: '2018/03/01', role: 'Member', status: 'Blocked' },
-  { name: 'Agapetus Tadeáš', email: 'test11raa@thedavincia.com', registered: '2018/01/21', role: 'Staff', status: 'Active' },
-  { name: 'Carwyn Fachtna', email: 'test12raa@thedavincia.com', registered: '2018/01/01', role: 'Member', status: 'Active' },
-  { name: 'Nehemiah Tatius', email: 'test13raa@thedavincia.com', registered: '2018/02/01', role: 'Staff', status: 'Active' },
-  { name: 'Ebbe Gemariah', email: 'test14raa@thedavincia.com', registered: '2018/02/01', role: 'Admin', status: 'Blocked' },
-  { name: 'Eustorgios Amulius', email: 'test15raa@thedavincia.com', registered: '2018/03/01', role: 'Member', status: 'Blocked' },
-  { name: 'Leopold Gáspár', email: 'test16raa@thedavincia.com', registered: '2018/01/21', role: 'Staff', status: 'Active' },
-  { name: 'Pompeius René', email: 'test17raa@thedavincia.com', registered: '2018/01/01', role: 'Member', status: 'Active' },
-  { name: 'Paĉjo Jadon', email: 'test18raa@thedavincia.com', registered: '2018/02/01', role: 'Staff', status: 'Active' },
-  { name: 'Micheal Mercurius', email: 'test19raa@thedavincia.com', registered: '2018/02/01', role: 'Admin', status: 'Blocked' },
-  { name: 'Ganesha Dubhghall', email: 'test20raa@thedavincia.com', registered: '2018/03/01', role: 'Member', status: 'Active' },
-  { name: 'Hiroto Šimun', email: 'test21raa@thedavincia.com', registered: '2018/01/21', role: 'Staff', status: 'Blocked' },
-  { name: 'Vishnu Serghei', email: 'test22raa@thedavincia.com', registered: '2018/01/01', role: 'Member', status: 'Blocked' },
-  { name: 'Zbyněk Phoibos', email: 'test23raa@thedavincia.com', registered: '2018/02/01', role: 'Staff', status: 'Active' },
-  { name: 'Aulus Agmundr', email: 'test24raa@thedavincia.com', registered: '2018/01/01', status: 'Active' },
-  { name: 'Ford Prefect', email: 'test25raa@thedavincia.com', registered: '2001/05/25', status: 'Active' }
+/**
+ const usersData = [
+    { name: 'John Doe', email: 'test1raa@thedavincia.com', registered: '2018/01/01', role: 'Guest', status: 'Active' },
+    { name: 'Samppa Nori', email: 'test2raa@thedavincia.com', registered: '2018/01/01', role: 'Member', status: 'Active' },
+    { name: 'Estavan Lykos', email: 'test3raa@thedavincia.com', registered: '2018/02/01', role: 'Staff', status: 'Blocked' },
+    { name: 'Chetan Mohamed', email: 'test4raa@thedavincia.com', registered: '2018/02/01', role: 'Admin', status: 'Blocked' },
+    { name: 'Derick Maximinus', email: 'test5raa@thedavincia.com', registered: '2018/03/01', role: 'Member', status: 'Blocked' },
+    { name: 'Friderik Dávid', email: 'test6raa@thedavincia.com', registered: '2018/01/21', role: 'Staff', status: 'Active' },
+    { name: 'Yiorgos Avraamu', email: 'test7raa@thedavincia.com', registered: '2018/01/01', role: 'Member', status: 'Active' },
+    { name: 'Avram Tarasios', email: 'test8raa@thedavincia.com', registered: '2018/02/01', role: 'Staff', status: 'Blocked' },
+    { name: 'Quintin Ed', email: 'test9raa@thedavincia.com', registered: '2018/02/01', role: 'Admin', status: 'Blocked' },
+    { name: 'Enéas Kwadwo', email: 'test10raa@thedavincia.com', registered: '2018/03/01', role: 'Member', status: 'Blocked' },
+    { name: 'Agapetus Tadeáš', email: 'test11raa@thedavincia.com', registered: '2018/01/21', role: 'Staff', status: 'Active' },
+    { name: 'Carwyn Fachtna', email: 'test12raa@thedavincia.com', registered: '2018/01/01', role: 'Member', status: 'Active' },
+    { name: 'Nehemiah Tatius', email: 'test13raa@thedavincia.com', registered: '2018/02/01', role: 'Staff', status: 'Active' },
+    { name: 'Ebbe Gemariah', email: 'test14raa@thedavincia.com', registered: '2018/02/01', role: 'Admin', status: 'Blocked' },
+    { name: 'Eustorgios Amulius', email: 'test15raa@thedavincia.com', registered: '2018/03/01', role: 'Member', status: 'Blocked' },
+    { name: 'Leopold Gáspár', email: 'test16raa@thedavincia.com', registered: '2018/01/21', role: 'Staff', status: 'Active' },
+    { name: 'Pompeius René', email: 'test17raa@thedavincia.com', registered: '2018/01/01', role: 'Member', status: 'Active' },
+    { name: 'Paĉjo Jadon', email: 'test18raa@thedavincia.com', registered: '2018/02/01', role: 'Staff', status: 'Active' },
+    { name: 'Micheal Mercurius', email: 'test19raa@thedavincia.com', registered: '2018/02/01', role: 'Admin', status: 'Blocked' },
+    { name: 'Ganesha Dubhghall', email: 'test20raa@thedavincia.com', registered: '2018/03/01', role: 'Member', status: 'Active' },
+    { name: 'Hiroto Šimun', email: 'test21raa@thedavincia.com', registered: '2018/01/21', role: 'Staff', status: 'Blocked' },
+    { name: 'Vishnu Serghei', email: 'test22raa@thedavincia.com', registered: '2018/01/01', role: 'Member', status: 'Blocked' },
+    { name: 'Zbyněk Phoibos', email: 'test23raa@thedavincia.com', registered: '2018/02/01', role: 'Staff', status: 'Active' },
+    { name: 'Aulus Agmundr', email: 'test24raa@thedavincia.com', registered: '2018/01/01', status: 'Active' },
+    { name: 'Ford Prefect', email: 'test25raa@thedavincia.com', registered: '2001/05/25', status: 'Active' }
 ];
+*/
+
 
 function Test() {
   const [details, setDetails] = useState([]);
@@ -68,7 +71,7 @@ function Test() {
 
   return (
     <CDataTable
-      items={usersData}
+      items={[]}
       fields={fields}
       columnFilter
       itemsPerPageSelect

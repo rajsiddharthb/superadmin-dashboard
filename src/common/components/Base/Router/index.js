@@ -10,8 +10,9 @@ const loading = (
 );
 
 export default ({ routes }) => (
-  <Switch>
-    <Suspense fallback={loading}>
+  <Suspense fallback={loading}>
+
+    <Switch>
       {routes.map((route) => route.component && (
         <Route
           key={route.name}
@@ -25,7 +26,7 @@ export default ({ routes }) => (
           )}
         />
       ))}
-    </Suspense>
-    <Redirect from="/" to="/d" />
-  </Switch>
+      <Redirect from="/" to="/dashboard" />
+    </Switch>
+  </Suspense>
 );

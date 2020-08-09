@@ -90,7 +90,7 @@ const LoginContainer = () => {
   }, [dispatch]);
 
   const redirect = () => {
-    window.location.href = `${config.app_urls.superAdminDashboard}/d`;
+    window.location.href = `${config.app_urls.superAdminDashboard}/dashboard`;
   };
 
   return (

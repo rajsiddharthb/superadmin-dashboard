@@ -1,10 +1,9 @@
 import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Route, Switch, Router, Redirect } from 'react-router-dom';
+import { Route, Switch, BrowserRouter, Redirect } from 'react-router-dom';
 import AppContainer from 'common/components/Base/AppContainer';
 import AppLayout from 'common/components/Base/AppLayout';
 import Loader from 'common/components/Loader';
-import { history } from 'config/routes';
 import { ToastProvider, DefaultToastContainer, useToasts } from 'react-toast-notifications';
 
 import { initApplication } from 'common/actions/app/actions';
@@ -50,22 +49,20 @@ function App({ initApp }) {
   return (
     <ToastProvider components={{ ToastContainer: CustomToastContainer }} placement="top-right">
       <ToastWrapper>
-        <React.StrictMode>
           <AppContainer>
             {state.isReady ? (
-              <Router history={history}>
+              <BrowserRouter>
                 <React.Suspense fallback={loading}>
                   <Switch>
                     <Route exact path="/login" name="Login Page" render={props => <Login {...props} />} />
                     <Route path="/" name="Home" component={AppLayout} />
                     {state.isLoggedIn === false && <Redirect to="/login" />}
-                    <Route exact path="*" name="Page 404" render={props => <Page404 {...props} />} />
+                    <Route name="Page 404" render={props => <Page404 {...props} />} />
                   </Switch>
                 </React.Suspense>
-              </Router>
+              </BrowserRouter>
             ) : <Loader size={70} />}
           </AppContainer>
-        </React.StrictMode>
       </ToastWrapper>
     </ToastProvider>
   );

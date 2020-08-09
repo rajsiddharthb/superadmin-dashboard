@@ -31,7 +31,6 @@ import { CBadge, CButton, CCollapse, CCardBody, CDataTable } from '@coreui/react
 ];
 */
 
-
 function Test() {
   const [details, setDetails] = useState([]);
   // const [items, setItems] = useState(usersData)

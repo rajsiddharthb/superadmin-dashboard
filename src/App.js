@@ -49,20 +49,20 @@ function App({ initApp }) {
   return (
     <ToastProvider components={{ ToastContainer: CustomToastContainer }} placement="top-right">
       <ToastWrapper>
-          <AppContainer>
-            {state.isReady ? (
-              <BrowserRouter>
-                <React.Suspense fallback={loading}>
-                  <Switch>
-                    <Route exact path="/login" name="Login Page" render={props => <Login {...props} />} />
-                    <Route path="/" name="Home" component={AppLayout} />
-                    {state.isLoggedIn === false && <Redirect to="/login" />}
-                    <Route name="Page 404" render={props => <Page404 {...props} />} />
-                  </Switch>
-                </React.Suspense>
-              </BrowserRouter>
-            ) : <Loader size={70} />}
-          </AppContainer>
+        <AppContainer>
+          {state.isReady ? (
+            <BrowserRouter>
+              <React.Suspense fallback={loading}>
+                <Switch>
+                  <Route exact path="/login" name="Login Page" render={props => <Login {...props} />} />
+                  <Route path="/" name="Home" component={AppLayout} />
+                  {state.isLoggedIn === false && <Redirect to="/login" />}
+                  <Route name="Page 404" render={props => <Page404 {...props} />} />
+                </Switch>
+              </React.Suspense>
+            </BrowserRouter>
+          ) : <Loader size={70} />}
+        </AppContainer>
       </ToastWrapper>
     </ToastProvider>
   );

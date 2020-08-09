@@ -6,7 +6,7 @@ export default [
     icon: 'cil-speedometer',
     badge: {
       color: 'danger',
-      text: 'FEAUTURE'
+      text: 'FUTURE'
     }
   },
   {
@@ -20,8 +20,8 @@ export default [
         name: 'RAA',
         to: '/raa/users',
         badge: {
-          color: 'info',
-          text: 'SOON'
+          color: 'success',
+          text: 'NEW'
         }
       }
     ]
@@ -33,7 +33,7 @@ export default [
     icon: 'cil-user',
     badge: {
       color: 'danger',
-      text: 'FEAUTURE'
+      text: 'FUTURE'
     }
   },
   {
@@ -43,7 +43,7 @@ export default [
     icon: 'cil-speech',
     badge: {
       color: 'danger',
-      text: 'FEAUTURE'
+      text: 'FUTURE'
     }
   }
 ];

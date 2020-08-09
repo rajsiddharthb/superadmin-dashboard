@@ -25,11 +25,8 @@ const RAA = () => {
         <CTabs
           activeTab={activeTab}
           onActiveTabChange={onActiveTabChange}
-          style={{
-            paddingTop: 10
-          }}
         >
-          <CNav variant="pills" fill justified>
+          <CNav variant="pills" fill justified >
             <CNavItem>
               <CNavLink>
                 Users
@@ -41,7 +38,7 @@ const RAA = () => {
               </CNavLink>
             </CNavItem>
           </CNav>
-          <CTabContent fade>
+          <CTabContent fade style={{ paddingTop: 15 }}>
             <CTabPane>
               {activeTab === 0 && <RaaListContainer />}
             </CTabPane>

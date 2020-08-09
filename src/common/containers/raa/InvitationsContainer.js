@@ -12,8 +12,8 @@ const buildDate = (date) => {
 
   return `${localeDate} ${localeTime}`;
 };
-
-function Table({ data, isLoading }) {
+const limit = 20;
+function Table({ data, isLoading, handlePageChange, currentPage, totalCount }) {
   const [details, setDetails] = useState([]);
   // const [items, setItems] = useState(usersData)
 
@@ -45,27 +45,38 @@ function Table({ data, isLoading }) {
   };
 
   return (
-    <CDataTable
-      items={data}
-      fields={fields}
-      columnFilter
-      itemsPerPageSelect
-      itemsPerPage={5}
-      hover
-      sorter
-      border
-      outlined
-      responsive
-      size="ms"
-      pagination
-      noItemsViewSlot="No Data To Display"
-      loading={isLoading}
-      scopedSlots={{
-        email: (item) => <td>{item.meta_data.email}</td>,
-        fullName: (item) => <td>{item.meta_data.fullName}</td>,
-        lastUpdate: (item) => <td>{buildDate(item.updatedAt)}</td>,
-        createdAt: (item) => <td>{buildDate(item.createdAt)}</td>,
-        status:
+    <div className="__container">
+      <div>
+        <p className="text-info" style={{ fontSize: 16 }}>
+          Total Count - {totalCount}
+        </p>
+      </div>
+      <CDataTable
+        items={data}
+        fields={fields}
+        itemsPerPage={limit}
+        hover
+        sorter
+        border
+        outlined
+        responsive
+        size="ms"
+        columnFilter
+        pagination={{
+          activePage: currentPage,
+          dots: true,
+          limit: 4,
+          pages: 20,
+          onActivePageChange: handlePageChange
+        }}
+        noItemsViewSlot="No Data To Display"
+        loading={isLoading}
+        scopedSlots={{
+          email: (item) => <td>{item.meta_data.email}</td>,
+          fullName: (item) => <td>{item.meta_data.fullName}</td>,
+          lastUpdate: (item) => <td>{buildDate(item.updatedAt)}</td>,
+          createdAt: (item) => <td>{buildDate(item.createdAt)}</td>,
+          status:
                 (item) => (
                   <td style={{ margin: '0 auto' }}>
                     <CBadge size="lg" color={getBadge(item.status)}>
@@ -73,7 +84,7 @@ function Table({ data, isLoading }) {
                     </CBadge>
                   </td>
                 ),
-        show_details:
+          show_details:
                 (item, index) => (
                   <td className="py-2">
                     <CButton
@@ -87,13 +98,18 @@ function Table({ data, isLoading }) {
                     </CButton>
                   </td>
                 )
-      }}
-    />
+        }}
+      />
+    </div>
   );
 }
 
 function InvitationsContainer() {
   const dispatch = useDispatch();
+  const [currentPage, setCurrentPage] = useState(1);
+  const handlePageChange = (nextPage) => {
+    setCurrentPage(nextPage);
+  };
   const [query] = useState({ limit: 20, offset: 0, typeId: 1 });
 
   const state = useSelector(getAllInvitationsSelector('raa'));
@@ -108,6 +124,8 @@ function InvitationsContainer() {
       data={state.data}
       isLoading={actionStatuses.isActionStatusPending(state.status)}
       totalCount={state.totalCount}
+      currentPage={currentPage}
+      handlePageChange={handlePageChange}
     />
   );
 }

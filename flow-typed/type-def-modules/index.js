@@ -28,7 +28,7 @@ declare module 'redux-saga/effects' {
 
     declare function takeLatest(): Promise<any>;
     declare function take(): Promise<any>;
-    declare function put(): Promise<any>;
+    declare function put(action: any): Promise<any>;
     declare function all(): Iterator;
 }
 

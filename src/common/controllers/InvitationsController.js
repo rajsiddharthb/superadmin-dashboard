@@ -1,8 +1,9 @@
-import { takeEvery, put } from 'redux-saga/effects';
+import { takeEvery, takeLatest, put } from 'redux-saga/effects';
 import NetworkService from 'common/services/network/NetworkService';
 import config from 'config';
 import {
-  setCreateInvitationFailure, setCreateInvitationSuccess
+  setCreateInvitationFailure, setCreateInvitationSuccess,
+  getGetAllInvitationsSuccess, getGetAllInvitationsFailure
 } from '../actions/invitations/actions';
 import INV_ACTION_TYPES from '../actions/invitations/types';
 
@@ -17,8 +18,19 @@ function* createInvitation({ payload }) {
   }
 }
 
+function* getAllInvitation({ payload }) {
+  try {
+    const { body } = yield invitationService.makeAPIGetRequest('', { query_params: payload.data });
+
+    yield put(getGetAllInvitationsSuccess(payload.type, body));
+  } catch (e) {
+    yield put(getGetAllInvitationsFailure(payload.type, e.message));
+  }
+}
+
 function* invitationController() {
   yield takeEvery(INV_ACTION_TYPES.CREATE_INVITATION, createInvitation);
+  yield takeLatest(INV_ACTION_TYPES.GET_ALL_INVITATIONS, getAllInvitation);
 }
 
 export default invitationController;

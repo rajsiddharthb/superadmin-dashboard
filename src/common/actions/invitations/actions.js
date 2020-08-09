@@ -19,3 +19,24 @@ export const reSetCreateInvitationState = (type) => ({
   type: INVITATION_ACTION_TYPES.RESET_INVITATIONS_CREATE_STATE,
   payload: { type }
 });
+
+// get all
+export const getAllInvitations = (type, data) => ({
+  type: INVITATION_ACTION_TYPES.GET_ALL_INVITATIONS,
+  payload: { type, data }
+});
+
+export const getGetAllInvitationsSuccess = (type, { data, meta }) => ({
+  type: INVITATION_ACTION_TYPES.SET_GET_ALL_INVITATIONS_SUCCESS,
+  payload: { type, data, meta }
+});
+
+export const getGetAllInvitationsFailure = (type, error) => ({
+  type: INVITATION_ACTION_TYPES.SET_GET_ALL_INVITATIONS_FAILURE,
+  payload: { type, error }
+});
+
+export const resetGetAllInvitationsState = (type) => ({
+  type: INVITATION_ACTION_TYPES.RESET_GET_ALL_INVITATIONS_STATE,
+  payload: { type }
+});

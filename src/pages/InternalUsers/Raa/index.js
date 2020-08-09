@@ -26,7 +26,7 @@ const RAA = () => {
           activeTab={activeTab}
           onActiveTabChange={onActiveTabChange}
         >
-          <CNav variant="pills" fill justified >
+          <CNav variant="pills" fill justified>
             <CNavItem>
               <CNavLink>
                 Users

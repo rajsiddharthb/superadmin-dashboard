@@ -12,7 +12,6 @@ import {
   CSubheader,
   CBreadcrumbRouter
 } from '@coreui/react';
-// routes config
 import appReducer from 'common/reducers/appReducer';
 import { attemptToLogout } from 'common/actions/auth/actions';
 import TheHeaderDropdown from '../TheHeaderDropdown';
@@ -63,9 +62,6 @@ const AppHeader = () => {
       </CHeaderNav>
 
       <CHeaderNav className="px-3">
-        {/* <TheHeaderDropdownNotif /> */}
-        {/* <TheHeaderDropdownTasks /> */}
-        {/* <TheHeaderDropdownMssg /> */}
         <TheHeaderDropdown
           logOut={logOut}
           user={user}
@@ -76,22 +72,7 @@ const AppHeader = () => {
         <CBreadcrumbRouter
           className="border-0 c-subheader-nav m-0 px-0 px-md-3"
           routes={routes}
-        />{/*
-        <div className="d-md-down-none mfe-2 c-subheader-nav">
-          <CLink className="c-subheader-nav-link" href="#">
-            <CIcon name="cil-speech" alt="Settings" />
-          </CLink>
-          <CLink
-            className="c-subheader-nav-link"
-            aria-current="page"
-            to="/dashboard"
-          >
-            <CIcon name="cil-graph" alt="Dashboard" />&nbsp;Dashboard
-          </CLink>
-          <CLink className="c-subheader-nav-link" href="#">
-            <CIcon name="cil-settings" alt="Settings" />&nbsp;Settings
-          </CLink>
-        </div> */}
+        />
       </CSubheader>
     </CHeader>
   );

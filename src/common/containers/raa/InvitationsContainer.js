@@ -15,7 +15,6 @@ const buildDate = (date) => {
 const limit = 20;
 function Table({ data, isLoading, handlePageChange, currentPage, totalCount }) {
   const [details, setDetails] = useState([]);
-  // const [items, setItems] = useState(usersData)
 
   const toggleDetails = (index) => {
     const position = details.indexOf(index);

@@ -7,8 +7,7 @@ import Util from 'lib/helpers/Util';
 import { usersByTypeSelector } from '../../selectors/usersSelector';
 import { fetchUsersList } from '../../actions/users/actions';
 import TOAST from '../../../lib/toastManager';
-// import Table from 'common/components/Table';
-// import { CBadge, CButton, CCollapse, CCardBody } from '@coreui/react';
+
 const buildDate = (date) => {
   const d = new Date(date);
   const localeTime = d.toLocaleTimeString();

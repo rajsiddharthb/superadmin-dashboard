@@ -47,7 +47,6 @@ const RAA = () => {
             </CTabPane>
           </CTabContent>
         </CTabs>
-        {/* Modal */}
         {modalIsOpen && (
           <AddInvitationContainer
             modalIsOpen={modalIsOpen}
